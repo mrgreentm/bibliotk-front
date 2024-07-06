@@ -1,0 +1,24 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@bibliotk/features/auth": ["features/auth/src/index.ts"],
+      "@bibliotk/features/home": ["features/home/src/index.ts"],
+      "@bibliotk/features/landing-page": ["features/landing-page/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,20 @@
+<div class="container">
+    <header>
+        <section class="title">bibliotk</section>
+        <section class="actions">
+            <mat-chip-set aria-label="Fish selection">
+                @for (route of routes; track route.title) {
+                    <mat-chip [routerLink]="route.path">{{route.title}}</mat-chip>
+                }
+            </mat-chip-set>
+        </section>
+    </header>
+    <content>
+        <section class="principal-title"><h1>Seu Gerenciador de Biblioteca</h1></section>
+        <section class="about">
+            <p>Oferecemos uma solução escalável para gerenciar sua biblioteca.</p>
+        </section>
+        <button mat-stroked-button>começar</button>
+        <img src="./assets/image.jpg" alt="">
+    </content>
+</div>
