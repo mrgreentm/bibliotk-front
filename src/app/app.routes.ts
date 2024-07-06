@@ -11,6 +11,10 @@ export const appRoutes: Route[] = [
         loadComponent: loadComponents.loadLandingPageComponent
     },
     {
+        path: 'home',
+        loadComponent: loadComponents.loadHomeComponent
+    },
+    {
         path: '**',
         redirectTo: 'landing-page'
     }
