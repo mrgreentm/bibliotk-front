@@ -1,0 +1,15 @@
+<div class="container">
+  <content class="nav-bar">
+    <section class="title">
+      <h3>bibliotk</h3>
+    </section>
+    <section class="menus">
+      @for (menu of menus; track menu.title) {
+        <mat-list-item>
+          <mat-icon matListItemIcon>folder</mat-icon>
+          <div matListItemTitle>{{menu.title}}</div>
+        </mat-list-item>
+      }
+    </section>
+  </content>
+</div>
