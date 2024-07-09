@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@bibliotk/features/auth": ["features/auth/src/index.ts"],
+      "@bibliotk/features/books": ["features/books/src/index.ts"],
       "@bibliotk/features/home": ["features/home/src/index.ts"],
       "@bibliotk/features/landing-page": ["features/landing-page/src/index.ts"]
     }

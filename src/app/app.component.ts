@@ -1,5 +1,5 @@
 import { Component, OnDestroy, inject } from '@angular/core';
-import { ResolveEnd, Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -20,7 +20,8 @@ export class AppComponent implements OnDestroy {
     this.router.events
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
-        this.verifyCurrentRoute((res as ResolveEnd).url)
+        if(res instanceof NavigationEnd)
+        this.verifyCurrentRoute(res.url)
       })
   }
   ngOnDestroy(): void {
@@ -29,8 +30,8 @@ export class AppComponent implements OnDestroy {
   }
 
   verifyCurrentRoute(url: string): void {
-    if (url?.includes("home"))
-      this.showNavBar = true;
-    else this.showNavBar = false;
+    if (url?.includes("auth") || url?.includes("landing-page"))
+      this.showNavBar = false;
+    else this.showNavBar = true;
   }
 }
