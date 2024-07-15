@@ -8,6 +8,6 @@ import { AuthResponseInterface } from '../interfaces/auth-response.interface';
 export class AuthService {
     constructor(private httpClient: HttpClient) { }
     login(body: AuthRequestInterface): Observable<AuthResponseInterface> {
-        return this.httpClient.post<AuthResponseInterface>('http://localhost:3000/auth', body)
+        return this.httpClient.post<AuthResponseInterface>('http://localhost:8080/auth/login', body)
     }
 }
