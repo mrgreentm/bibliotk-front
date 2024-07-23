@@ -2,10 +2,11 @@ import { Component, OnDestroy, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { Subject, takeUntil } from 'rxjs';
+import { AlertComponent } from './layout/alert/alert.component';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, NavBarComponent],
+  imports: [RouterModule, NavBarComponent, AlertComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -17,12 +18,7 @@ export class AppComponent implements OnDestroy {
   title = 'bibliotk';
 
   constructor() {
-    this.router.events
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
-        if(res instanceof NavigationEnd)
-        this.verifyCurrentRoute(res.url)
-      })
+    this.listenEventsFromRoute();
   }
   ngOnDestroy(): void {
     this.destroy$.next(null);
@@ -33,5 +29,14 @@ export class AppComponent implements OnDestroy {
     if (url?.includes("auth") || url?.includes("landing-page"))
       this.showNavBar = false;
     else this.showNavBar = true;
+  }
+
+  listenEventsFromRoute(): void {
+    this.router.events
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        if (res instanceof NavigationEnd)
+          this.verifyCurrentRoute(res.url)
+      })
   }
 }

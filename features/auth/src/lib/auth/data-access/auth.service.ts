@@ -10,4 +10,11 @@ export class AuthService {
     login(body: AuthRequestInterface): Observable<AuthResponseInterface> {
         return this.httpClient.post<AuthResponseInterface>('http://localhost:8080/auth/login', body)
     }
+    getTokenFromStorage(): string {
+        const token = localStorage.getItem('token');
+        return token ? token : '';
+    }
+    setTokenOnStorage(token: string): void {
+        localStorage.setItem('token', token)
+    }
 }
