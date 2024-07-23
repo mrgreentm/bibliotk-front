@@ -17,11 +17,12 @@ export const appRoutes: Route[] = [
         path: 'home',
         loadComponent: loadComponents.loadHomeComponent,
         providers: [AuthService],
-        canActivate: [authGuard],
+        canActivate: [authGuard]
     },
     {
         path: 'books',
-        loadComponent: loadComponents.loadBooksComponent
+        loadComponent: loadComponents.loadBooksComponent,
+        canActivate: [authGuard]
     },
     {
         path: '**',
