@@ -43,6 +43,7 @@ export class NavBarComponent implements OnInit {
     this.selectRoute();
   }
   selectRoute(): void {
+    console.log('oi')
     this.menus.forEach((menu) => {
       if (this.router.url.includes(menu.path))
         menu.selected = true;

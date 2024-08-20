@@ -2,7 +2,7 @@
 import { Route } from '@angular/router';
 import { loadComponents } from './load-components';
 import { authGuard } from '@bibliotk/features/auth';
-import { AuthService } from 'features/auth/src/lib/auth/data-access/auth.service';
+import { AuthService } from '@bibliotk/features/auth';
 
 export const appRoutes: Route[] = [
     {

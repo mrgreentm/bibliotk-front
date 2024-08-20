@@ -5,7 +5,7 @@
     </section>
     <section class="menus">
       @for (menu of menus; track menu.path) {
-        <mat-list-item routerLinkActive="active" [routerLink]="menu.path">
+        <mat-list-item routerLinkActive="active" (click)="selectRoute()" [routerLink]="menu.path">
           <mat-icon matListItemIcon>folder</mat-icon>
           <div matListItemTitle>{{menu.title}}</div>
         </mat-list-item>
