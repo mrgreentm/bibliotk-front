@@ -1,1 +1,18 @@
-<p>books works!</p>
+<div class="container">
+  @for(book of (books$ | async); track book.id) {
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ book.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ book.author }}</p>
+    </mat-card-content>
+    <mat-card-footer class="example-card-footer">
+      <mat-chip-set aria-label="Chihuahua traits">
+        <mat-chip>{{ book.status }}</mat-chip>
+        <mat-chip>{{ book.category }}</mat-chip>
+      </mat-chip-set>
+    </mat-card-footer>
+  </mat-card>
+  }
+</div>
