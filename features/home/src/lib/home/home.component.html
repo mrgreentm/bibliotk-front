@@ -17,8 +17,8 @@
       <mat-card-actions>
         @if( !(loan.dueDate | dueDate)) {
         <mat-chip class="warning">atrasado</mat-chip>
-
         }
+        <button mat-button (click)="deleteLoan(loan.loanId.toString())">entregar</button>
       </mat-card-actions>
     </mat-card>
     }
