@@ -1,7 +1,27 @@
-
-<p>{{ (homeData$ | async) | json }}</p>
 <div class="container">
-    @if ({homeData: homeData$ | async}; as data) {
-        <h2>Seja muito bem-vindo, {{data.homeData?.userName | uppercase}}</h2>
+  @if ({homeData: homeData$ | async}; as data) {
+  <h2>Seja muito bem-vindo, {{ data.homeData?.userName | uppercase }}</h2>
+
+  <h3>Seus empréstimos</h3>
+  <div class="cards-container">
+    @for (loan of data.homeData?.loans; track loan.bookId) {
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ loan.bookTitle }}</mat-card-title>
+        <mat-card-subtitle>Author: {{ loan.bookAuthor }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        data do empréstimo: {{ loan.loanDate | convertData }}<br />
+        data de vencimento: {{ loan.dueDate | convertData }}
+      </mat-card-content>
+      <mat-card-actions>
+        @if( !(loan.dueDate | dueDate)) {
+        <mat-chip class="warning">atrasado</mat-chip>
+
+        }
+      </mat-card-actions>
+    </mat-card>
     }
+  </div>
+  }
 </div>

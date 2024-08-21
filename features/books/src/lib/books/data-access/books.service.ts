@@ -14,12 +14,20 @@ export class BooksService {
     createLoan(book: BookInterface, dates: {returnDate: string, loanDate: string}): Observable<void> {
         return this.http.post<void>('http://localhost:8080/loans',
             {
-                "userId": 2,
+                "userId": this.authService.getUserIdFromStorage(),
                 "bookId": book.id,
-                "loanDate":dates.loanDate,
-                "returnDate": dates.returnDate
+                "loanDate": this.formatIsoDate(dates.loanDate),
+                "returnDate": this.formatIsoDate(dates.returnDate)
             }
         )
     }
+    private formatIsoDate(isoDateString: string): string {
+        const date = new Date(isoDateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+      
 
 }
