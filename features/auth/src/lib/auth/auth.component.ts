@@ -56,7 +56,7 @@ export class AuthComponent {
     });
   }
   private saveAuthenticationData(data: AuthResponseInterface): void {
-    this.authService.setTokenOnStorage(data.token);
+    this.authService.setTokenOnStorage(data.token, data.userId);
     this.router.navigateByUrl('/home')
   }
   private sendErrorMessage() {

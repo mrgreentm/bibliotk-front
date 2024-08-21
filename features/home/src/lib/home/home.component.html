@@ -1,1 +1,7 @@
-<p>home works!</p>
+
+<p>{{ (homeData$ | async) | json }}</p>
+<div class="container">
+    @if ({homeData: homeData$ | async}; as data) {
+        <h2>Seja muito bem-vindo, {{data.homeData?.userName | uppercase}}</h2>
+    }
+</div>

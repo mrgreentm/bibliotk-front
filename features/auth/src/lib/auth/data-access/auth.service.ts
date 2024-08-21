@@ -18,8 +18,12 @@ export class AuthService {
     const token = localStorage.getItem('token');
     return token ? token : '';
   }
-  setTokenOnStorage(token: string): void {
-    localStorage.setItem('token', token)
+  getUserIdFromStorage(): string {
+    return localStorage.getItem('userId') || '';
+  }
+  setTokenOnStorage(token: string, userId: number): void {
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId',  userId.toString());
   }
   logout(): void {
     localStorage.removeItem('token');

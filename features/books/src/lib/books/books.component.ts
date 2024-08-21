@@ -24,15 +24,15 @@ export class BooksComponent {
 
   openDialog(book: BookInterface): void {
     const dialogRef = this.dialog.open(LoanDialogComponent, {
-      width: '250px',
-      height: '250px',
-      exitAnimationDuration: '0ms',
-      enterAnimationDuration: '0ms',
+      width: '300px',
+      height: '300px',
+      exitAnimationDuration: '3ms',
+      enterAnimationDuration: '3ms',
       data: book
     });
     dialogRef.afterClosed()
-      .pipe(filter((res) => !!res),
-        concatMap(() => this.bookService.createLoan(book)),
+      .pipe(filter((res) => res),
+        concatMap((res) => this.bookService.createLoan(book, res)),
         concatMap(() => this.bookService.getAllBooks()),
         tap((books: BookInterface[]) => this.books$ = of(books))
       )
